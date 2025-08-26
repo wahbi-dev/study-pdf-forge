@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
+import { FileUpload } from "@/components/FileUpload";
 
 const SmartStudy = () => {
   const questionTypes = [
@@ -48,17 +49,14 @@ const SmartStudy = () => {
           </div>
 
           {/* Upload Area */}
-          <Card className="mb-12 border-dashed border-2 border-muted-foreground/20 bg-accent/10">
-            <CardContent className="p-12 text-center">
-              <Brain className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">Upload your study material</h3>
-              <p className="text-muted-foreground mb-6">AI will analyze your PDF and generate personalized questions</p>
-              <Button size="lg" className="bg-hero-gradient hover:opacity-90">
-                <FileText className="w-4 h-4 mr-2" />
-                Generate Questions from PDF
-              </Button>
-            </CardContent>
-          </Card>
+          <FileUpload 
+            title="Upload your study material"
+            description="AI will analyze your PDF and generate personalized questions"
+            acceptedTypes=".pdf"
+            buttonText="Generate Questions from PDF"
+            icon={Brain}
+            onFileSelect={(file) => console.log('Study material selected:', file.name)}
+          />
 
           {/* Question Types */}
           <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6 mb-12">

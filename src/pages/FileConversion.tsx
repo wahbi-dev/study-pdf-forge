@@ -2,6 +2,7 @@ import { ArrowLeft, FileText, Upload, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { FileUpload } from "@/components/FileUpload";
 
 const FileConversion = () => {
   const conversions = [
@@ -35,14 +36,14 @@ const FileConversion = () => {
           </div>
 
           {/* Upload Area */}
-          <Card className="mb-12 border-dashed border-2 border-muted-foreground/20 bg-accent/10">
-            <CardContent className="p-12 text-center">
-              <Upload className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">Drop your files here</h3>
-              <p className="text-muted-foreground mb-6">Or click to browse and select files</p>
-              <Button size="lg">Choose Files</Button>
-            </CardContent>
-          </Card>
+          <FileUpload 
+            title="Drop your files here"
+            description="Supports PDF, Word, PowerPoint, Excel, and image files"
+            acceptedTypes=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.jpg,.jpeg,.png"
+            buttonText="Choose Files"
+            icon={Upload}
+            onFileSelect={(file) => console.log('File selected:', file.name)}
+          />
 
           {/* Conversion Options */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

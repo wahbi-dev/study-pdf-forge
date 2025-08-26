@@ -2,6 +2,7 @@ import { ArrowLeft, Edit3, Scissors, Merge, Download, Plus, Trash2 } from "lucid
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { FileUpload } from "@/components/FileUpload";
 
 const PDFEditing = () => {
   const tools = [
@@ -65,14 +66,14 @@ const PDFEditing = () => {
           </div>
 
           {/* Upload Area */}
-          <Card className="mb-12 border-dashed border-2 border-muted-foreground/20 bg-accent/10">
-            <CardContent className="p-12 text-center">
-              <Edit3 className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">Upload your PDF to start editing</h3>
-              <p className="text-muted-foreground mb-6">Drag and drop your PDF file or browse to select</p>
-              <Button size="lg">Upload PDF</Button>
-            </CardContent>
-          </Card>
+          <FileUpload 
+            title="Upload your PDF to start editing"
+            description="Drag and drop your PDF file or browse to select"
+            acceptedTypes=".pdf"
+            buttonText="Upload PDF"
+            icon={Edit3}
+            onFileSelect={(file) => console.log('PDF selected for editing:', file.name)}
+          />
 
           {/* Editing Tools */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
