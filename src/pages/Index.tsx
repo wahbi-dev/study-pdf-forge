@@ -5,64 +5,37 @@ import { FeatureCard } from "@/components/FeatureCard";
 import { FileUpload } from "@/components/FileUpload";
 import { AIDemo } from "@/components/AIDemo";
 import heroImage from "@/assets/hero-image.jpg";
-
 const Index = () => {
-  const features = [
-    {
-      icon: FileText,
-      title: "File Conversion",
-      description: "Seamlessly convert between PDF and popular formats like Word, PowerPoint, Excel, and images.",
-      features: [
-        "Word, PowerPoint, Excel → PDF",
-        "PDF → Word, PowerPoint, Excel",
-        "Image formats supported",
-        "Batch conversion available"
-      ]
-    },
-    {
-      icon: Edit3,
-      title: "PDF Editing Tools", 
-      description: "Professional-grade editing tools to modify, merge, and extract content from your PDFs.",
-      features: [
-        "Add/remove content in PDF",
-        "Merge multiple PDFs",
-        "Extract text & images",
-        "Split and reorganize pages"
-      ]
-    },
-    {
-      icon: Brain,
-      title: "Smart Study Assistant",
-      description: "AI-powered question generation that turns your PDFs into interactive study materials.",
-      features: [
-        "Generate MCQs automatically",
-        "Create short answer questions",
-        "Essay prompts from content",
-        "Instant self-testing tools"
-      ]
-    }
-  ];
-
-  const benefits = [
-    {
-      icon: Clock,
-      title: "Save Time",
-      description: "Streamline your workflow with automated tools that work in seconds."
-    },
-    {
-      icon: CheckCircle,
-      title: "All-in-One Platform",
-      description: "Everything you need for PDF editing and learning in one place."
-    },
-    {
-      icon: Shield,
-      title: "Secure & Reliable",
-      description: "Your documents are processed securely with enterprise-grade protection."
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const features = [{
+    icon: FileText,
+    title: "File Conversion",
+    description: "Seamlessly convert between PDF and popular formats like Word, PowerPoint, Excel, and images.",
+    features: ["Word, PowerPoint, Excel → PDF", "PDF → Word, PowerPoint, Excel", "Image formats supported", "Batch conversion available"]
+  }, {
+    icon: Edit3,
+    title: "PDF Editing Tools",
+    description: "Professional-grade editing tools to modify, merge, and extract content from your PDFs.",
+    features: ["Add/remove content in PDF", "Merge multiple PDFs", "Extract text & images", "Split and reorganize pages"]
+  }, {
+    icon: Brain,
+    title: "Smart Study Assistant",
+    description: "AI-powered question generation that turns your PDFs into interactive study materials.",
+    features: ["Generate MCQs automatically", "Create short answer questions", "Essay prompts from content", "Instant self-testing tools"]
+  }];
+  const benefits = [{
+    icon: Clock,
+    title: "Save Time",
+    description: "Streamline your workflow with automated tools that work in seconds."
+  }, {
+    icon: CheckCircle,
+    title: "All-in-One Platform",
+    description: "Everything you need for PDF editing and learning in one place."
+  }, {
+    icon: Shield,
+    title: "Secure & Reliable",
+    description: "Your documents are processed securely with enterprise-grade protection."
+  }];
+  return <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-hero-gradient opacity-5"></div>
@@ -111,30 +84,14 @@ const Index = () => {
             </div>
             
             <div className="animate-float">
-              <img 
-                src={heroImage} 
-                alt="Students using EduPDF tools"
-                className="rounded-2xl shadow-strong w-full h-auto"
-              />
+              <img src={heroImage} alt="Students using EduPDF tools" className="rounded-2xl shadow-strong w-full h-auto" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Interactive Demo Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Try It Out</h2>
-            <p className="text-muted-foreground">Upload a file and see the AI question generator in action</p>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <FileUpload />
-            <AIDemo />
-          </div>
-        </div>
-      </section>
+      
 
       {/* Features Section */}
       <section className="py-20">
@@ -147,13 +104,7 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <FeatureCard 
-                key={index}
-                {...feature}
-                className={`delay-${index * 100}`}
-              />
-            ))}
+            {features.map((feature, index) => <FeatureCard key={index} {...feature} className={`delay-${index * 100}`} />)}
           </div>
         </div>
       </section>
@@ -166,8 +117,7 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="text-center border-0 shadow-soft bg-card-gradient animate-slide-up">
+            {benefits.map((benefit, index) => <Card key={index} className="text-center border-0 shadow-soft bg-card-gradient animate-slide-up">
                 <CardContent className="p-8">
                   <div className="flex items-center justify-center w-14 h-14 mx-auto mb-4 bg-primary/10 rounded-2xl">
                     <benefit.icon className="w-7 h-7 text-primary" />
@@ -175,30 +125,13 @@ const Index = () => {
                   <h3 className="text-lg font-semibold text-foreground mb-3">{benefit.title}</h3>
                   <p className="text-muted-foreground">{benefit.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-hero-gradient opacity-10"></div>
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-foreground mb-4">Ready to Transform Your PDFs?</h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join thousands of students and teachers who are already using EduPDF to enhance their learning experience.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-6 shadow-medium hover:shadow-strong transition-all">
-              Get Started Free
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-              View Pricing
-            </Button>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Footer */}
       <footer className="py-12 border-t border-border bg-muted/20">
@@ -216,8 +149,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;

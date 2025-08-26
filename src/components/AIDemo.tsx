@@ -3,71 +3,46 @@ import { Brain, ArrowRight, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-
-const sampleQuestions = [
-  {
-    type: "MCQ",
-    question: "What is the main advantage of renewable energy sources?",
-    options: ["Low cost", "Environmental benefits", "Easy installation", "High efficiency"],
-    difficulty: "Easy"
-  },
-  {
-    type: "Short Answer",
-    question: "Explain how photosynthesis contributes to the oxygen cycle.",
-    difficulty: "Medium"
-  },
-  {
-    type: "Essay",
-    question: "Discuss the impact of artificial intelligence on modern education systems.",
-    difficulty: "Hard"
-  }
-];
-
+const sampleQuestions = [{
+  type: "MCQ",
+  question: "What is the main advantage of renewable energy sources?",
+  options: ["Low cost", "Environmental benefits", "Easy installation", "High efficiency"],
+  difficulty: "Easy"
+}, {
+  type: "Short Answer",
+  question: "Explain how photosynthesis contributes to the oxygen cycle.",
+  difficulty: "Medium"
+}, {
+  type: "Essay",
+  question: "Discuss the impact of artificial intelligence on modern education systems.",
+  difficulty: "Hard"
+}];
 export const AIDemo = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isGenerating, setIsGenerating] = useState(false);
-
   const generateNext = () => {
     setIsGenerating(true);
     setTimeout(() => {
-      setCurrentQuestion((prev) => (prev + 1) % sampleQuestions.length);
+      setCurrentQuestion(prev => (prev + 1) % sampleQuestions.length);
       setIsGenerating(false);
     }, 1000);
   };
-
   useEffect(() => {
     const interval = setInterval(() => {
       generateNext();
     }, 4000);
-    
     return () => clearInterval(interval);
   }, []);
-
   const question = sampleQuestions[currentQuestion];
-
-  return (
-    <Card className="relative overflow-hidden bg-card-gradient border-0 shadow-medium animate-scale-in">
-      <CardHeader className="pb-4">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-10 h-10 bg-feature-gradient rounded-xl">
-            <Brain className="w-5 h-5 text-white" />
-          </div>
-          <div>
-            <h3 className="font-semibold text-foreground">AI Question Generator</h3>
-            <p className="text-sm text-muted-foreground">See it in action</p>
-          </div>
-        </div>
-      </CardHeader>
+  return <Card className="relative overflow-hidden bg-card-gradient border-0 shadow-medium animate-scale-in">
+      
       
       <CardContent className="space-y-4">
         <div className="flex items-center gap-2">
           <Badge variant="outline" className="text-xs">
             {question.type}
           </Badge>
-          <Badge 
-            variant={question.difficulty === 'Easy' ? 'secondary' : question.difficulty === 'Medium' ? 'default' : 'destructive'}
-            className="text-xs"
-          >
+          <Badge variant={question.difficulty === 'Easy' ? 'secondary' : question.difficulty === 'Medium' ? 'default' : 'destructive'} className="text-xs">
             {question.difficulty}
           </Badge>
         </div>
@@ -77,36 +52,22 @@ export const AIDemo = () => {
             {question.question}
           </p>
           
-          {question.options && (
-            <div className="mt-3 space-y-1">
-              {question.options.map((option, index) => (
-                <div key={index} className="text-xs text-muted-foreground pl-4">
+          {question.options && <div className="mt-3 space-y-1">
+              {question.options.map((option, index) => <div key={index} className="text-xs text-muted-foreground pl-4">
                   {String.fromCharCode(65 + index)}. {option}
-                </div>
-              ))}
-            </div>
-          )}
+                </div>)}
+            </div>}
         </div>
         
-        <Button 
-          onClick={generateNext} 
-          disabled={isGenerating}
-          size="sm" 
-          className="w-full gap-2"
-        >
-          {isGenerating ? (
-            <>
+        <Button onClick={generateNext} disabled={isGenerating} size="sm" className="w-full gap-2">
+          {isGenerating ? <>
               <Sparkles className="w-4 h-4 animate-spin" />
               Generating...
-            </>
-          ) : (
-            <>
+            </> : <>
               Generate Next
               <ArrowRight className="w-4 h-4" />
-            </>
-          )}
+            </>}
         </Button>
       </CardContent>
-    </Card>
-  );
+    </Card>;
 };
