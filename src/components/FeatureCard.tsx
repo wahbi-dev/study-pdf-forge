@@ -1,5 +1,6 @@
 import { LucideIcon } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
+import { useNavigate } from "react-router-dom";
 
 interface FeatureCardProps {
   icon: LucideIcon;
@@ -7,11 +8,23 @@ interface FeatureCardProps {
   description: string;
   features: string[];
   className?: string;
+  navigateTo?: string;
 }
 
-export const FeatureCard = ({ icon: Icon, title, description, features, className }: FeatureCardProps) => {
+export const FeatureCard = ({ icon: Icon, title, description, features, className, navigateTo }: FeatureCardProps) => {
+  const navigate = useNavigate();
+  
+  const handleClick = () => {
+    if (navigateTo) {
+      navigate(navigateTo);
+    }
+  };
+
   return (
-    <Card className={`relative overflow-hidden bg-card-gradient border-0 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1 animate-fade-in ${className}`}>
+    <Card 
+      className={`relative overflow-hidden bg-card-gradient border-0 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1 animate-fade-in ${navigateTo ? 'cursor-pointer' : ''} ${className}`}
+      onClick={handleClick}
+    >
       <CardContent className="p-8">
         <div className="flex items-center justify-center w-16 h-16 mb-6 bg-feature-gradient rounded-2xl shadow-soft">
           <Icon className="w-8 h-8 text-white" />

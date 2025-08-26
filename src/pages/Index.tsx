@@ -10,17 +10,20 @@ const Index = () => {
     icon: FileText,
     title: "File Conversion",
     description: "Seamlessly convert between PDF and popular formats like Word, PowerPoint, Excel, and images.",
-    features: ["Word, PowerPoint, Excel → PDF", "PDF → Word, PowerPoint, Excel", "Image formats supported", "Batch conversion available"]
+    features: ["Word, PowerPoint, Excel → PDF", "PDF → Word, PowerPoint, Excel", "Image formats supported", "Batch conversion available"],
+    navigateTo: "/file-conversion"
   }, {
     icon: Edit3,
     title: "PDF Editing Tools",
     description: "Professional-grade editing tools to modify, merge, and extract content from your PDFs.",
-    features: ["Add/remove content in PDF", "Merge multiple PDFs", "Extract text & images", "Split and reorganize pages"]
+    features: ["Add/remove content in PDF", "Merge multiple PDFs", "Extract text & images", "Split and reorganize pages"],
+    navigateTo: "/pdf-editing"
   }, {
     icon: Brain,
     title: "Smart Study Assistant",
     description: "AI-powered question generation that turns your PDFs into interactive study materials.",
-    features: ["Generate MCQs automatically", "Create short answer questions", "Essay prompts from content", "Instant self-testing tools"]
+    features: ["Generate MCQs automatically", "Create short answer questions", "Essay prompts from content", "Instant self-testing tools"],
+    navigateTo: "/smart-study"
   }];
   const benefits = [{
     icon: Clock,
